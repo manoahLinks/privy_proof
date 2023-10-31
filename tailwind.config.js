@@ -7,7 +7,7 @@ export default {
         sans: ["Inter", "sans-serif"],
       },
       colors: {
-        primaryColor: "#00B1FF",
+        primaryColor: "#0D47A1",
         overlayColor: "rgba(58, 58, 58, 0.50)",
         blackLight: "#3A3A3A",
         secondaryColor: "#FAFDFF",
@@ -23,5 +23,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 };

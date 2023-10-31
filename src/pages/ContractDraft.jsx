@@ -1,109 +1,75 @@
 function ContractDraft() {
   return (
-    <div>
-      <h1 className="mb-[17px] text-lg font-semibold leading-default text-black">
-        NDA Contract
-      </h1>
-      <div className="flex h-full justify-center bg-secondaryColor pb-[31px] pt-[41px]">
-        <form className="pb-[31px flex h-fit w-full flex-col pl-[39px] pr-[48px]">
-          <h2 className="mb-[21px] text-center text-base font-bold leading-default text-black">
-            Disclosing Party
-          </h2>
-          <div className="flex flex-col gap-y-6">
-            <div className="grid grid-cols-[1fr_1fr] gap-x-[120px]">
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Disclosing Party
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Disclosing Party
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-[1fr_1fr] gap-x-[120px]">
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Purpose
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Obligation
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-[1fr_1fr] gap-x-[120px]">
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Confidential Information
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Exculsions
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-[1fr_1fr] gap-x-[120px]">
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Terms
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-              <div>
-                <label className="text-base font-semibold leading-default text-black">
-                  Date
-                </label>
-                <input
-                  type="text"
-                  placeholder="Caleb.eth"
-                  className="mt-[8px] h-[128px] w-full rounded-[10px] border-[0.5px] border-solid border-[#c4c4c4] bg-white px-[16px] py-[14px]"
-                />
-              </div>
-            </div>
-            <button className="mt-9 w-[483px] self-center rounded-full bg-primaryColor py-3 text-center text-base font-semibold leading-default text-black">
-              Preview
-            </button>
+    <div className="flex flex-col gap-y-4">
+      <h4 className="text-center font-semibold">Prompt Master</h4>
+      <form className="grid grid-cols-1 gap-y-2">
+        <div className="flex flex-col gap-y-1">
+          <label>Name of recieving party</label>
+          <input 
+            type="text" 
+            name=""
+            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+            placeholder="enter name of 1st party" 
+          />
+        </div>
+
+        <div className="flex flex-col gap-y-1">
+          <label>Name of other party</label>
+          <input 
+            type="text" 
+            name=""
+            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+            placeholder="enter name of 2nd party" 
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-x-4">
+          <div className="flex flex-col gap-y-1">
+            <label>Start date</label>
+            <input 
+              type="date" 
+              name=""
+              className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+              
+            />
           </div>
-        </form>
-      </div>
+
+          <div className="flex flex-col gap-y-1">
+            <label>End date</label>
+            <input 
+              type="date" 
+              name=""
+              className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+              
+            />
+          </div>
+        </div>
+        
+
+        <div className="flex flex-col gap-y-1">
+          <label>Type of contract</label>
+          <select  
+            name=""
+            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+             
+          >
+            <option>Select</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-y-1">
+          <label>Duration of contract</label>
+          <textarea 
+            type="date" 
+            name=""
+            className="placeholder-slate-300 rounded-lg p-2 border-slate-300"
+            placeholder=""
+             rows={4}
+          />
+        </div>
+
+        <button className="p-2 rounded-full bg-[#0D47A1] text-white mt-20">Preview</button>
+      </form>
     </div>
   );
 }

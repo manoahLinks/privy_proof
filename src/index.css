@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .heroImg {
-  background: url("./assets/heroImg.jpg") no-repeat center center/cover;
+  background: url("./assets/backgrnd.png") no-repeat center center/cover;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,30 +1,18 @@
-import { useState } from "react";
-import BtnWide from "../ui/BtnWide";
-import ConnectModal from "../ui/ConnectModal";
-import HomeNav from "../ui/HomeNav";
-import BtnSmall from "../ui/BtnSmall";
+import { BtnWide } from "../ui";
 
 function LandingPage() {
-  const [showConnectWalletModal, setShowConnectWalletModal] = useState(false);
-  function toggleModal() {
-    setShowConnectWalletModal((show) => !show);
-  }
   return (
     <div className="relative h-[100vh] overflow-y-hidden">
-      {showConnectWalletModal && <ConnectModal toggleModal={toggleModal} />}
-      <HomeNav>
-        <BtnSmall onClick={toggleModal}>Connect Wallet</BtnSmall>
-      </HomeNav>
-      <main className="heroImg h-[929px] pt-[167px] text-center text-white">
-        <h1 className="mb-[27px] text-[90px] font-bold leading-[84px]">
+      <main className="heroImg md:h-[929px] h-screen pt-[167px] relative gap-y-8 flex flex-col text-center text-white">
+        <div className="rounded-full bg-primaryColor p-8 absolute -mt-2 ml-12">
+
+        </div>
+        <h1 className="md:mb-[27px] md:text-[90px] z-[100] text-[40px] font-bold md:leading-[84px]">
           Unlock Privacy
           <br /> Prove Legitimacy{" "}
+          <br/> Easy Pay
         </h1>
-        <p className="leading-default mb-[30px] text-[22px] font-semibold">
-          Where your agreements stay private, and their existence is
-          indisputable
-        </p>
-        <BtnWide onClick={toggleModal}>Connect Wallet</BtnWide>
+        <BtnWide  onClick={''}>Get Started</BtnWide>
       </main>
     </div>
   );

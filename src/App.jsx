@@ -1,30 +1,39 @@
-import CreateIdentityPage from "./pages/CreateIdentityPage";
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom';
+import { Main } from './layout';
+import { ContractDraft, LandingPage, NewContract } from './pages';
 
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AppLayout from "./pages/AppLayout";
-import LandingPage from "./pages/LandingPage";
-import DashboardPage from "./pages/DashboardPage";
-import WhatToDo from "./pages/WhatToDo";
-import CreateContract from "./pages/CreateContract";
-import ContractDraft from "./pages/ContractDraft";
-import ContractPreview from "./pages/ContractPreview";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: `/`,
+      element: <Main/>,
+      children: [
+        {
+          index: true,
+          element: <LandingPage/>
+        },
+        {
+          path: 'get-started',
+          element: <NewContract/>
+        },
+        {
+          path: 'draft-with-ai',
+          element: <ContractDraft/>
+        }
+      ]
+    }
+  ])
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/create" element={<CreateIdentityPage />} />
-        <Route path="/choice" element={<WhatToDo />} />
-        <Route path="/app" element={<AppLayout />}>
-          <Route index element={<Navigate replace to="dashboard" />} />
-          <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="contract-draft" element={<ContractDraft />} />
-          <Route path="contract-preview" element={<ContractPreview />} />
-          <Route path="create-contract" element={<CreateContract />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+
+    <>
+      <RouterProvider router={router}/>
+    </>
+
   );
 }
 
