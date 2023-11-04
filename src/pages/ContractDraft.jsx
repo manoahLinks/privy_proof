@@ -1,4 +1,57 @@
+import { useEffect, useState } from "react";
+import { Spinner } from "../ui";
+
 function ContractDraft() {
+
+  const [isPending, setIspending] = useState(false)
+  const [data, setData] = useState()
+
+  const [formData, setFormData] = useState({
+    recievingParty: '',
+    otherParty: '',
+    startDate: '',
+    endDate: '',
+    contractType: '',
+    additionalInfo: ''
+  })
+
+  useEffect(()=>{
+    
+  }, [data])
+
+  const inputChange = (e) => {
+    setFormData((prevState) => ({
+        ...prevState, [e.target.name]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    setIspending(true)
+    const prompt = `create an ${formData.contractType} between ${formData.recievingParty} and ${formData.otherParty}, starting from ${formData.startDate} to ${formData.endDate}`
+    
+    const response = await fetch(`http://localhost:7000/create`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({prompt})
+    })
+
+    const json = await response.json()
+
+    if(!response.ok){
+      setIspending(false)
+      alert(json)   
+    }
+
+    if(response.ok){
+      setIspending(false)
+      setData(json.data.content)
+    }
+  }
+
   return (
     <div className="flex flex-col gap-y-4">
       <h4 className="text-center font-semibold">Prompt Master</h4>
@@ -7,7 +60,9 @@ function ContractDraft() {
           <label>Name of recieving party</label>
           <input 
             type="text" 
-            name=""
+            name="recievingParty"
+            value={formData.recievingParty}
+            onChange={inputChange}
             className="placeholder-slate-300 rounded-full p-2 border-slate-300"
             placeholder="enter name of 1st party" 
           />
@@ -17,7 +72,9 @@ function ContractDraft() {
           <label>Name of other party</label>
           <input 
             type="text" 
-            name=""
+            name="otherParty"
+            value={formData.otherParty}
+            onChange={inputChange}
             className="placeholder-slate-300 rounded-full p-2 border-slate-300"
             placeholder="enter name of 2nd party" 
           />
@@ -28,7 +85,9 @@ function ContractDraft() {
             <label>Start date</label>
             <input 
               type="date" 
-              name=""
+              name="startDate"
+              value={formData.startDate}
+              onChange={inputChange}
               className="placeholder-slate-300 rounded-full p-2 border-slate-300"
               
             />
@@ -38,7 +97,9 @@ function ContractDraft() {
             <label>End date</label>
             <input 
               type="date" 
-              name=""
+              name="endDate"
+              value={formData.endDate}
+              onChange={inputChange}
               className="placeholder-slate-300 rounded-full p-2 border-slate-300"
               
             />
@@ -49,26 +110,34 @@ function ContractDraft() {
         <div className="flex flex-col gap-y-1">
           <label>Type of contract</label>
           <select  
-            name=""
+            name="contractType"
+            value={formData.contractType}
+            onChange={inputChange}
             className="placeholder-slate-300 rounded-full p-2 border-slate-300"
-             
           >
-            <option>Select</option>
+            <option value={''}>Select one</option>
+            <option value={'employment'}>Employment</option>
+            <option value={'lease'}>lease</option>
+            <option value={'one time sale'}>one time sale</option>
           </select>
         </div>
 
         <div className="flex flex-col gap-y-1">
-          <label>Duration of contract</label>
+          <label>Additional Info</label>
           <textarea 
             type="date" 
-            name=""
+            name="additionalInfo"
+            value={formData.additionalInfo}
+            onChange={inputChange}
             className="placeholder-slate-300 rounded-lg p-2 border-slate-300"
             placeholder=""
              rows={4}
           />
         </div>
 
-        <button className="p-2 rounded-full bg-[#0D47A1] text-white mt-20">Preview</button>
+        <button onClick={handleSubmit} className="p-2 rounded-full bg-[#0D47A1] text-white mt-20">Preview</button>
+        {isPending && <Spinner/>}
+        {data && data.length > 0 && <h4>{data}</h4>}
       </form>
     </div>
   );
