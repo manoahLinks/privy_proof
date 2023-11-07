@@ -3,7 +3,7 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import { Main } from './layout';
-import { ContractDraft, LandingPage, NewContract } from './pages';
+import { ContractDraft, CreateIdentityPage, LandingPage, NewContract } from './pages';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         },
         {
           path: 'create-identity',
-          element: <NewContract/>
+          element: <CreateIdentityPage/>
         },
         {
           path: 'get-started',

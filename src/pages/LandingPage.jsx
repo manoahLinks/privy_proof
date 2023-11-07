@@ -14,7 +14,7 @@ function LandingPage() {
             <br /> Prove Legitimacy{" "}
             <br/> Easy Pay
           </h1>
-          <Link to={`/draft-with-ai`} className="bg-primaryColor w-[200px] h-[48px] whitespace-nowrap mx-auto rounded-full px-[63.5px] py-[11.5px] text-base font-semibold leading-[25px] text-white">
+          <Link to={`/create-identity`} className="bg-primaryColor w-[200px] h-[48px] whitespace-nowrap mx-auto rounded-full px-[63.5px] py-[11.5px] text-base font-semibold leading-[25px] text-white">
             Get Started
           </Link>
         </div>

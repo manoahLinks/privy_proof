@@ -9,7 +9,7 @@ const TaskBar = () => {
             id: 1,
             title: 'contract',
             icon: <HiOutlineDocumentText/>,
-            path: '/'
+            path: '/get-started'
         },
 
         {
