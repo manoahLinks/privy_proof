@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "../ui";
+import { ContractModal, Spinner } from "../ui";
 
 function ContractDraft() {
 
   const [isPending, setIspending] = useState(false)
+  const [preview, setPreview] = useState(false)
   const [data, setData] = useState()
 
   const [formData, setFormData] = useState({
@@ -49,6 +50,7 @@ function ContractDraft() {
     if(response.ok){
       setIspending(false)
       setData(json.data.content)
+      setPreview(true)
     }
   }
 
@@ -137,8 +139,9 @@ function ContractDraft() {
 
         <button onClick={handleSubmit} className="p-2 rounded-full bg-[#0D47A1] text-white mt-auto">Preview</button>
         {isPending && <Spinner/>}
-        {data && data.length > 0 && <h4>{data}</h4>}
+        {/* {data && data.length > 0 && <h4>{data}</h4>} */}
       </form>
+      {preview && data && <ContractModal contract={data}/>}
     </div>
   );
 }
