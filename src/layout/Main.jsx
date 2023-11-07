@@ -4,10 +4,10 @@ import { Navbar, TaskBar } from "../ui";
 const Main = () => {
     const location = useLocation()
     return ( 
-        <div className="flex flex-col w-full h-screen">
+        <div className="md:hidden flex flex-col w-full h-screen">
             <Navbar/>
             <hr />
-            <div className="p-3 grid grid-cols-1">
+            <div className="p-3 flex-1 grid grid-cols-1">
                 <Outlet/>
             </div>
             {location.pathname !== '/' ? <TaskBar/> : ``}     

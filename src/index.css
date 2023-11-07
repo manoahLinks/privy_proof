@@ -4,6 +4,7 @@
 
 .heroImg {
   background: url("./assets/backgrnd.png") no-repeat center center/cover;
+  height: 100%;
 }
 
 ::-webkit-scrollbar-thumb {

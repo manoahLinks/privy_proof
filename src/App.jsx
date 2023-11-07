@@ -17,6 +17,10 @@ function App() {
           element: <LandingPage/>
         },
         {
+          path: 'create-identity',
+          element: <NewContract/>
+        },
+        {
           path: 'get-started',
           element: <NewContract/>
         },

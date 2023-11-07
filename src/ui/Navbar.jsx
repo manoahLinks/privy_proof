@@ -1,4 +1,4 @@
-import {HiBars3CenterLeft} from 'react-icons/hi2';
+import {HiChevronLeft} from 'react-icons/hi2';
 import { useLocation } from 'react-router-dom';
 import profileImg from '../assets/profile.png'
 
@@ -10,8 +10,8 @@ const Navbar = () => {
             
             <div className="flex items-center justify-between">
                 <div className='flex items-center gap-x-4'>
-                    <HiBars3CenterLeft size={25}/>
-                    <p className='font-semibold'>{location.pathname}</p>
+                    <HiChevronLeft size={25}/>
+                    <p className='font-semibold'>{location.pathname.slice(1, location.pathname.length)}</p>
                 </div>
                 <img src={profileImg} alt="" />
             </div>
