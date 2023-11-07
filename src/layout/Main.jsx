@@ -4,7 +4,7 @@ import { Navbar, TaskBar } from "../ui";
 const Main = () => {
     const location = useLocation()
     return ( 
-        <div className="md:hidden overflow-y-scroll flex flex-col w-full h-screen">
+        <div className="md:hidden flex flex-col w-full fixed h-[100vh]">
             <Navbar/>
             <hr />
             <div className="p-3 grid grid-cols-1">
