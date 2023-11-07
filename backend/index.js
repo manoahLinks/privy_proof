@@ -14,6 +14,10 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
+app.get('/', async (req, res) => {
+    res.send('welcome to privy-proof Api !!!')
+})
+
 app.post(`/create`, async (req, res) => {
     try {
         const {prompt} = req.body
