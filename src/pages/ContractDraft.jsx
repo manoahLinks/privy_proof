@@ -55,7 +55,7 @@ function ContractDraft() {
   return (
     <div className="flex flex-col gap-y-4">
       <h4 className="text-center font-semibold">Prompt Master</h4>
-      <form className="grid grid-cols-1 gap-y-2">
+      <form className="grid grid-cols-1 p-2 gap-y-4">
         <div className="flex flex-col gap-y-2">
           <label>Name of recieving party</label>
           <input 
@@ -63,7 +63,7 @@ function ContractDraft() {
             name="recievingParty"
             value={formData.recievingParty}
             onChange={inputChange}
-            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+            className="placeholder-slate-300 text-xs rounded-full p-2 border-slate-300"
             placeholder="enter name of 1st party" 
           />
         </div>
@@ -75,7 +75,7 @@ function ContractDraft() {
             name="otherParty"
             value={formData.otherParty}
             onChange={inputChange}
-            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+            className="placeholder-slate-300 text-xs rounded-full p-2 border-slate-300"
             placeholder="enter name of 2nd party" 
           />
         </div>
@@ -88,7 +88,7 @@ function ContractDraft() {
               name="startDate"
               value={formData.startDate}
               onChange={inputChange}
-              className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+              className="placeholder-slate-300 text-xs rounded-full p-2 border-slate-300"
               
             />
           </div>
@@ -100,7 +100,7 @@ function ContractDraft() {
               name="endDate"
               value={formData.endDate}
               onChange={inputChange}
-              className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+              className="placeholder-slate-300 text-xs rounded-full p-2 border-slate-300"
               
             />
           </div>
@@ -113,7 +113,7 @@ function ContractDraft() {
             name="contractType"
             value={formData.contractType}
             onChange={inputChange}
-            className="placeholder-slate-300 rounded-full p-2 border-slate-300"
+            className="placeholder-slate-300 text-xs rounded-full p-2 border-slate-300"
           >
             <option value={''}>Select one</option>
             <option value={'employment'}>Employment</option>
@@ -129,13 +129,13 @@ function ContractDraft() {
             name="additionalInfo"
             value={formData.additionalInfo}
             onChange={inputChange}
-            className="placeholder-slate-300 rounded-lg p-2 border-slate-300"
+            className="placeholder-slate-300 text-xs rounded-lg p-2 border-slate-300"
             placeholder=""
              rows={4}
           />
         </div>
 
-        <button onClick={handleSubmit} className="p-2 rounded-full bg-[#0D47A1] text-white mt-20">Preview</button>
+        <button onClick={handleSubmit} className="p-2 rounded-full bg-[#0D47A1] text-white mt-auto">Preview</button>
         {isPending && <Spinner/>}
         {data && data.length > 0 && <h4>{data}</h4>}
       </form>
