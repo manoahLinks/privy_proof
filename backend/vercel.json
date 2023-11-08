@@ -9,11 +9,21 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "index.js",
-        "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-        "headers": {
-            "Access-Control-Allow-Origin": "*"
-        }
+        "dest": "index.js"
       }
+    ],
+    "headers": [
+        {
+          "source": "/(.*)",
+          "headers": [
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        },
+        {
+          "source": "/https://privy-proof-eight.vercel.app/(.*)",
+          "headers": [
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        }  
     ]
   }
