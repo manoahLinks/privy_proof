@@ -4,7 +4,9 @@ const express = require('express'),
     app = express(),
     cors = require('cors')
 
-app.use(cors())
+app.use(cors({
+    origin: "https://privy-proof-eight.vercel.app/"
+}))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
