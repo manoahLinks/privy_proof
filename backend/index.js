@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
     res.send('welcome to privy-proof Api !!!')
 })
 
-app.post(`/create`, async (req, res) => {
+app.post(`/`, async (req, res) => {
     try {
         const {prompt} = req.body
 
