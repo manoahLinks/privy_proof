@@ -32,7 +32,7 @@ function ContractDraft() {
     setIspending(true)
     const prompt = `create an ${formData.contractType} between ${formData.recievingParty} and ${formData.otherParty}, starting from ${formData.startDate} to ${formData.endDate}`
     
-    const response = await fetch(`https://privy-proof-api.vercel.app/create`, {
+    const response = await fetch(`https://privy-proof-api.onrender.com`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
