@@ -28,7 +28,7 @@ const TaskBar = () => {
     ]
 
     return ( 
-        <div className="grid grid-cols-3 mt-auto w-full bg-white py-5 justify-between md:hidden shadow">
+        <div className="grid grid-cols-3 bg-white w-full bg-white py-5 justify-between md:hidden shadow">
             {menu && menu.map((item)=>(
                 <Link key={item.id} to={item.path} className="flex flex-col items-center gap-y-1">
                     {item.icon}

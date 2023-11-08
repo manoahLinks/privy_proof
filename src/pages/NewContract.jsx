@@ -3,7 +3,7 @@ import ContractButton from "../ui/ContractBtn";
 
 const NewContract = () => {
     return ( 
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-8">
             <ContractButton path={`/`}>
                 Sign a contract
             </ContractButton>

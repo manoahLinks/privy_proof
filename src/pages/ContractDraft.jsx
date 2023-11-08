@@ -55,7 +55,7 @@ function ContractDraft() {
   }
 
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 flex-1 ">
       <h4 className="text-center font-semibold">Prompt Master</h4>
       <form className="grid grid-cols-1 p-2 gap-y-4 text-xs">
         <div className="flex flex-col gap-y-2">
@@ -138,7 +138,6 @@ function ContractDraft() {
         </div>
         <button onClick={handleSubmit} className="p-2 py-3 rounded-full bg-[#0D47A1] text-white mt-auto">Preview</button>
         {isPending && <Spinner/>}
-        {/* {data && data.length > 0 && <h4>{data}</h4>} */}
       </form>
       {preview && data && <ContractModal contract={data}/>}
     </div>
