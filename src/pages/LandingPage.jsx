@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
-    <div className="flex-1">
-      <main className="heroImg relative h-fit gap-y-8 flex text-center text-white">
+    <div className="flex-1 flex flex-col h-[90vh]">
+      <main className="heroImg relative gap-y-8 flex text-center text-white">
         {/* <div className="rounded-full bg-primaryColor p-8 absolute -mt-2 ml-12">
 
         </div> */}
-        <div className="flex flex-col gap-y-12">
+        <div className="flex flex-col m-auto gap-y-12">
           <h1 className="md:text-[90px] flex-1 z-[100] text-[40px] font-bold md:leading-[84px] leading-[40px]">
             Unlock Privacy
             <br /> Prove Legitimacy{" "}
