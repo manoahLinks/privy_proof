@@ -8,8 +8,8 @@ function LandingPage() {
   const [hasMinipay, setHasMinipay] = useState(false);
   const getProvider = async () => {
     // Ensure MiniPay provider is available
-    // if (window.ethereum && window.ethereum.isMiniPay) {
-    if (window.ethereum) {
+    if (window.ethereum && window.ethereum.isMiniPay) {
+      // if (window.ethereum) {
       setHasMinipay(true);
       if (!provider) {
         const _provider = new ethers.BrowserProvider(window.ethereum);
