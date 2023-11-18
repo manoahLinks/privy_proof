@@ -1,43 +1,47 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Main } from "./layout";
 import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom';
-import { Main } from './layout';
-import { ContractDraft, CreateIdentityPage, LandingPage, NewContract } from './pages';
-
+  ContractDraft,
+  CreateIdentityPage,
+  LandingPage,
+  NewContract,
+} from "./pages";
+import ContractDetails from "./pages/ContractDetails";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: `/`,
-      element: <Main/>,
+      element: <Main />,
       children: [
         {
           index: true,
-          element: <LandingPage/>
+          element: <LandingPage />,
         },
         {
-          path: 'create-identity',
-          element: <CreateIdentityPage/>
+          path: "create-identity",
+          element: <CreateIdentityPage />,
         },
         {
-          path: 'get-started',
-          element: <NewContract/>
+          path: "get-started",
+          element: <NewContract />,
         },
         {
-          path: 'draft-with-ai',
-          element: <ContractDraft/>
-        }
-      ]
-    }
-  ])
+          path: "draft-with-ai",
+          element: <ContractDraft />,
+        },
+        {
+          path: "contract-preview",
+          element: <ContractDetails />,
+        },
+      ],
+    },
+  ]);
 
   return (
-
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
-
   );
 }
 

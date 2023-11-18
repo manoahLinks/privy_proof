@@ -1,15 +1,19 @@
-import {FaSpinner} from 'react-icons/fa6'
+import { FaSpinner } from "react-icons/fa6";
+import PropTypes from "prop-types";
 
-function Spinner() {
+function Spinner({ message }) {
   return (
-    <div className='inset-0 flex  fixed w-full bg-slate-900 bg-opacity-50 h-screen'>
-         <div className='flex flex-col items-center gap-y-8 m-auto p-5 w-6/12 h-auto bg-white rounded-lg '>
-            <FaSpinner className='animate-spin' size={30} color='blue'/>
-            <h4 className='text-[12px] font-bold text-slate-600'>Preparing Contract...</h4>
-        </div>
+    <div className="fixed inset-0  flex h-screen w-full bg-slate-900 bg-opacity-50">
+      <div className="m-auto flex h-auto w-6/12 flex-col items-center gap-y-8 rounded-lg bg-white p-5 ">
+        <FaSpinner className="animate-spin" size={30} color="blue" />
+        <h4 className="text-[12px] font-bold text-slate-600">{message}</h4>
+      </div>
     </div>
-   
-  )
+  );
 }
 
-export default Spinner
+Spinner.propTypes = {
+  message: PropTypes.node.isRequired,
+};
+
+export default Spinner;
