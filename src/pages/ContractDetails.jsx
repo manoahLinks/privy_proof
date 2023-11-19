@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Spinner } from "../ui";
 import Swal from "sweetalert2";
 import { ProviderContext } from "../context/ProviderContext";
-import AgreementABI from "../utils/AgreementAbi.json";
+// import AgreementABI from "../utils/AgreementAbi.json";
 import { ethers } from "ethers";
 
 const ContractDetails = () => {
@@ -11,15 +11,20 @@ const ContractDetails = () => {
   const [loading, setLoading] = useState(false);
   const [txnLoading, setTxnLoading] = useState(false);
   const [contractData, setContractData] = useState(false);
-  const { provider } = useContext(ProviderContext);
+  //   const { provider } = useContext(ProviderContext);
 
   const CONTRACT_ADDRESS = "0x9C8AAfAAC33718c9CdD478F11F9Ed37c4Fc436c8";
 
   const fetchContractData = async (uri) => {
     try {
       setLoading(true);
+      alert("step1");
+      alert("ID IS ", id);
+      alert(uri);
       const response = await fetch(`https://nftstorage.link/ipfs/${uri}`);
+      alert(response);
       const data = await response.json();
+      alert("step2");
       console.log("data is -----____", data);
       setContractData(data.description);
       setLoading(false);
@@ -42,14 +47,40 @@ const ContractDetails = () => {
       if (window.ethereum) {
         console.log("eth found yeah");
 
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(
-          CONTRACT_ADDRESS,
-          AgreementABI,
-          signer,
-        );
+        // const signer = provider.getSigner();
+        // const contract = new ethers.Contract(
+        //   CONTRACT_ADDRESS,
+        //   AgreementABI,
+        //   signer,
+        // );
 
-        let tx = await contract.party2SignAgreement(id);
+        // let tx = await contract.party2SignAgreement(id);
+
+        let accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
+        // The current selected account out of the connected accounts.
+        let userAddress = accounts[0];
+
+        let iface = new ethers.utils.Interface([
+          "function party2SignAgreement(uint256 _agreementId) public",
+        ]);
+
+        let calldata = iface.encodeFunctionData("party2SignAgreement", [id]);
+
+        // Send transaction to the injected wallet to be confirmed by the user.
+        let tx = await window.ethereum.request({
+          method: "eth_sendTransaction",
+          params: [
+            {
+              from: userAddress,
+              to: CONTRACT_ADDRESS,
+              data: calldata, // Information about which function to call and what values to pass as parameters
+            },
+          ],
+        });
+
         await tx.wait();
         alert("success");
         console.log("TXNNN STATTUSS-------", tx);
@@ -79,14 +110,38 @@ const ContractDetails = () => {
       if (window.ethereum) {
         console.log("eth found yeah");
 
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(
-          CONTRACT_ADDRESS,
-          AgreementABI,
-          signer,
-        );
+        // const signer = provider.getSigner();
+        // const contract = new ethers.Contract(
+        //   CONTRACT_ADDRESS,
+        //   AgreementABI,
+        //   signer,
+        // );
 
-        let tx = await contract.mintNFTAgreement(id);
+        // let tx = await contract.mintNFTAgreement(id);
+        let accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
+        // The current selected account out of the connected accounts.
+        let userAddress = accounts[0];
+
+        let iface = new ethers.utils.Interface([
+          "function mintNFTAgreement(uint256 _agreementId) public ",
+        ]);
+
+        let calldata = iface.encodeFunctionData("mintNFTAgreement", [id]);
+
+        // Send transaction to the injected wallet to be confirmed by the user.
+        let tx = await window.ethereum.request({
+          method: "eth_sendTransaction",
+          params: [
+            {
+              from: userAddress,
+              to: CONTRACT_ADDRESS,
+              data: calldata, // Information about which function to call and what values to pass as parameters
+            },
+          ],
+        });
         await tx.wait();
         alert("success");
         console.log("TXNNN STATTUSS-------", tx);

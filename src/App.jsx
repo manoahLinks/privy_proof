@@ -7,6 +7,7 @@ import {
   NewContract,
 } from "./pages";
 import ContractDetails from "./pages/ContractDetails";
+import UserContracts from "./pages/UserContracts";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,10 @@ function App() {
         {
           path: "contract-preview",
           element: <ContractDetails />,
+        },
+        {
+          path: "your-contracts",
+          element: <UserContracts />,
         },
       ],
     },

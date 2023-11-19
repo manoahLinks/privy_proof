@@ -7,13 +7,13 @@ import PropTypes from "prop-types";
 
 function ContractCard({ id }) {
   const Navigate = useNavigate();
-  const { setId, updateId } = useContext(ProviderContext);
+  const { changeId, updateId } = useContext(ProviderContext);
   const [loading, setLoading] = useState(false);
 
   const viewStuff = async () => {
     try {
       setLoading(true);
-      await setId(id);
+      await changeId(id);
       await updateId();
 
       Navigate(`/contract-preview`);
@@ -33,7 +33,7 @@ function ContractCard({ id }) {
           Contract #{id}
           <br />
           <button
-            className="mt-[20px] w-[483px] self-center rounded-full bg-primaryColor py-3 text-center text-base font-semibold leading-default text-black"
+            className="mt-[20px] w-full self-center rounded-full bg-primaryColor py-3 text-center text-base font-semibold leading-default text-black"
             onClick={viewStuff}
           >
             View

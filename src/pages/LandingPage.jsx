@@ -4,18 +4,21 @@ import { ethers } from "ethers";
 import { ProviderContext } from "../context/ProviderContext";
 
 function LandingPage() {
-  const { provider, setProvider } = useContext(ProviderContext);
+  const { setProvider, setAccount } = useContext(ProviderContext);
   const [hasMinipay, setHasMinipay] = useState(false);
   const getProvider = async () => {
     // Ensure MiniPay provider is available
     if (window.ethereum && window.ethereum.isMiniPay) {
       // if (window.ethereum) {
       setHasMinipay(true);
-      if (!provider) {
-        const _provider = new ethers.BrowserProvider(window.ethereum);
-        console.log("Provider is ___", _provider);
-        setProvider(_provider);
-      }
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // alert("provider ???", provider);
+      const account = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(account);
+      setProvider(provider);
     } else {
       setHasMinipay(false);
       alert("MiniPay provider not detected");
@@ -24,7 +27,7 @@ function LandingPage() {
 
   useEffect(() => {
     getProvider();
-  }, [hasMinipay]);
+  }, []);
 
   return (
     <div className="flex h-[90vh] flex-1 flex-col">

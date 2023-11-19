@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NFTStorage } from "nft.storage";
 import { ethers } from "ethers";
 import Spinner from "./Spinner";
-import AgreementABI from "../utils/AgreementAbi.json";
-import { ProviderContext } from "../context/ProviderContext";
+// import AgreementABI from "../utils/AgreementAbi.json";
 import Swal from "sweetalert2";
 // import { utils } from "ethers";
 
@@ -11,7 +10,6 @@ import Swal from "sweetalert2";
 const ContractModal = ({ contract }) => {
   const [rAddress, setRAddress] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { provider } = useContext(ProviderContext);
 
   // Paste your NFT.Storage API key into the quotes:
   const NFT_STORAGE_KEY =
@@ -48,42 +46,44 @@ const ContractModal = ({ contract }) => {
           });
           console.log("account is ", account);
 
-          // let accounts = await window.ethereum.request({
-          //   method: "eth_requestAccounts",
-          // });
+          let accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
 
-          // // The current selected account out of the connected accounts.
-          // let userAddress = accounts[0];
+          // The current selected account out of the connected accounts.
+          let userAddress = accounts[0];
 
-          // let iface = new ethers.utils.Interface([
-          //   "function createAgreement(address _party2, string memory _tokenUri) ",
-          // ]);
+          let iface = new ethers.utils.Interface([
+            "function createAgreement(address _party2, string memory _tokenUri)",
+          ]);
 
-          // let calldata = iface.encodeFunctionData("mint", [
-          //   userAddress,
-          //   ipfsHash,
-          // ]);
+          let calldata = iface.encodeFunctionData("createAgreement", [
+            userAddress,
+            ipfsHash,
+          ]);
 
-          // // Send transaction to the injected wallet to be confirmed by the user.
-          // let tx = await window.ethereum.request({
-          //   method: "eth_sendTransaction",
-          //   params: [
-          //     {
-          //       from: userAddress,
-          //       to: CONTRACT_ADDRESS,
-          //       data: calldata, // Information about which function to call and what values to pass as parameters
-          //     },
-          //   ],
-          // });
-          const signer = provider.getSigner();
-          const contract = await new ethers.Contract(
-            CONTRACT_ADDRESS,
-            AgreementABI,
-            signer,
-          );
+          // Send transaction to the injected wallet to be confirmed by the user.
+          let tx = await window.ethereum.request({
+            method: "eth_sendTransaction",
+            params: [
+              {
+                from: userAddress,
+                to: CONTRACT_ADDRESS,
+                data: calldata, // Information about which function to call and what values to pass as parameters
+              },
+            ],
+          });
+          //   console.log("REQUESTING FOR PROVIDER");
+          //   const provider = ethers.providers.Web3Provider(window.ethereum);
+          //   const signer = provider.getSigner();
+          //   const contract = new ethers.Contract(
+          //     CONTRACT_ADDRESS,
+          //     AgreementABI,
+          //     signer,
+          //   );
 
-          let tx = await contract.createAgreement(rAddress, ipfsHash);
-          await tx.wait();
+          //   let tx = await contract.createAgreement(rAddress, ipfsHash);
+          //   await tx.wait();
           alert("success");
           console.log("TXNNN STATTUSS-------", tx);
           setIsLoading(false);
